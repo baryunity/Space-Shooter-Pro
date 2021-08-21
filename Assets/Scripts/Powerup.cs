@@ -7,13 +7,7 @@ public class Powerup : MonoBehaviour
     [SerializeField]
     private float _speed = 3f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+     // Update is called once per frame
     void Update()
     {
         transform.Translate(_speed * Vector3.down * Time.deltaTime);
