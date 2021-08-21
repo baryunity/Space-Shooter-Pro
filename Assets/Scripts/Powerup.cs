@@ -31,7 +31,7 @@ public class Powerup : MonoBehaviour
                     case 0:
                         player.TripleShotActive(); break;
                     case 1:
-                        print("powerupID = one   SPEED"); break;
+                        player.SpeedBoostActive(); break;
                     case 2:
                         print("powerupID = two   SHIELDS"); break;
                     default:
