@@ -19,10 +19,9 @@ public class Player : MonoBehaviour
     private int _lives = 3;
     private SpawnManager _spawnManager;
 
-    private bool isTripleShotActive = false;
-    [SerializeField]
-    private bool isSpeedBoostActive = false;
-    private bool isShieldActive = false;
+    private bool _isTripleShotActive = false;
+    private bool _isSpeedBoostActive = false;
+    private bool _isShieldsActive = false;
 
     void Start()
     {
@@ -71,7 +70,7 @@ public class Player : MonoBehaviour
     void FireLaser()
     {
         _canFire = Time.time + _fireRate;
-        if (isTripleShotActive)
+        if (_isTripleShotActive)
         {
             Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
         }
@@ -83,6 +82,12 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
+        if (_isShieldsActive)
+        {
+            _isShieldsActive = false;
+            return;
+        }
+
         _lives--;
         if (_lives < 1)
         {
@@ -93,19 +98,19 @@ public class Player : MonoBehaviour
 
     public void TripleShotActive()
     {
-        isTripleShotActive = true;
+        _isTripleShotActive = true;
         StartCoroutine(TripleShotPowerDownRoutine());
     }
 
     IEnumerator TripleShotPowerDownRoutine()
     {
         yield return new WaitForSeconds(5f);
-        isTripleShotActive = false;
+        _isTripleShotActive = false;
     }
 
     public void SpeedBoostActive()
     {
-        isSpeedBoostActive = true;
+        _isSpeedBoostActive = true;
         _speed *= _speedMulitplier;
         StartCoroutine(SpeedBoostPowerDownRoutine());
     }
@@ -113,19 +118,13 @@ public class Player : MonoBehaviour
     IEnumerator SpeedBoostPowerDownRoutine()
     {
         yield return new WaitForSeconds(5f);
-        isSpeedBoostActive = false;
+        _isSpeedBoostActive = false;
         _speed /= _speedMulitplier;
     }
 
-    public void ShieldActive()
+    public void ShieldsActive()
     {
-        isShieldActive = true;
-        StartCoroutine(ShieldPowerDownRoutine());
+        _isShieldsActive = true;
     }
 
-    IEnumerator ShieldPowerDownRoutine()
-    {
-        yield return new WaitForSeconds(5f);
-        isShieldActive = false;
-    }
 }
