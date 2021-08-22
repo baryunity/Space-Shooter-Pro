@@ -21,13 +21,17 @@ public class Player : MonoBehaviour
 
     private bool _isTripleShotActive = false;
     private bool _isSpeedBoostActive = false;
+    [SerializeField]
     private bool _isShieldsActive = false;
+    [SerializeField]
+    private GameObject _shieldVisualizer;
 
     void Start()
     {
         // Set the current position = new position (0, 0, 0)
         transform.position = new Vector3(0, 0, 0);
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+        _shieldVisualizer.SetActive(false);
 
         if (_spawnManager == null)
         {
@@ -85,6 +89,7 @@ public class Player : MonoBehaviour
         if (_isShieldsActive)
         {
             _isShieldsActive = false;
+            _shieldVisualizer.SetActive(false);
             return;
         }
 
@@ -125,6 +130,7 @@ public class Player : MonoBehaviour
     public void ShieldsActive()
     {
         _isShieldsActive = true;
+        _shieldVisualizer.SetActive(true);
     }
 
 }
