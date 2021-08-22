@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
         // Set the current position = new position (0, 0, 0)
         transform.position = new Vector3(0, 0, 0);
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
-        _shieldVisualizer.SetActive(false);
 
         if (_spawnManager == null)
         {
