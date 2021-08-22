@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     private bool isTripleShotActive = false;
     [SerializeField]
     private bool isSpeedBoostActive = false;
+    private bool isShieldActive = false;
 
     void Start()
     {
@@ -114,5 +115,17 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(5f);
         isSpeedBoostActive = false;
         _speed /= _speedMulitplier;
+    }
+
+    public void ShieldActive()
+    {
+        isShieldActive = true;
+        StartCoroutine(ShieldPowerDownRoutine());
+    }
+
+    IEnumerator ShieldPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(5f);
+        isShieldActive = false;
     }
 }

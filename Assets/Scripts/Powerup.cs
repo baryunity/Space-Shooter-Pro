@@ -33,7 +33,7 @@ public class Powerup : MonoBehaviour
                     case 1:
                         player.SpeedBoostActive(); break;
                     case 2:
-                        print("powerupID = two   SHIELDS"); break;
+                        player.ShieldActive(); break;
                     default:
                         Debug.LogError("Unknown powerupID = " + powerupID); break;
                 }

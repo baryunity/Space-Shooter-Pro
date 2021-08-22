@@ -331,7 +331,7 @@ MonoBehaviour:
   powerups:
   - {fileID: 5344273013099275062, guid: 457cc05b935d9ec4889ea366ae989962, type: 3}
   - {fileID: 7200760975504951030, guid: d59f517beaed7a24fb052398ab4a67fd, type: 3}
-  - {fileID: 0}
+  - {fileID: 2607923163289817606, guid: 7573e8cd5fff6f346b28c4825f57c815, type: 3}
   _waitTime: 5
   _stopSpawning: 0
   _powerupWaitTime: 0
