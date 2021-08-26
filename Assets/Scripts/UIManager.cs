@@ -42,7 +42,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateLives(int currentLives)
     {
-        print("UpdateLives: currentLives = " + currentLives);        //FOO
         _LivesImg.sprite = _liveSprites[currentLives];
 
         if (currentLives == 0)
